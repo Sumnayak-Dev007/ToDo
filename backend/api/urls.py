@@ -13,4 +13,5 @@ urlpatterns = [
     path('', views.getRoutes),
 
     path('todo/<user_id>/',views.TodoListView.as_view()),
+    path('todo-details/<user_id>/<todo_id>/',views.TodoDetailView.as_view()),
 ]
