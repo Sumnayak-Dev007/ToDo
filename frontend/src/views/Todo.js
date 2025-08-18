@@ -59,6 +59,23 @@ const Todo = () => {
             console.log(error);
         }
     }
+
+
+const deleteTodo = async (todo_id) => {
+        await api.delete(baseUrl + '/todo-detail/' + user_id + '/' + todo_id + '/')
+        Swal.fire({
+            title: "Todo Deleted",
+            icon:"success",
+            toast: true,
+            timer: 2000,
+            position: "top-right",
+            timerProgressBar: true,
+        })
+        fetchTodos()
+    }
+
+
+    
   return (
     <div>
             <div>
