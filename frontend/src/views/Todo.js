@@ -1,6 +1,29 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
+import useAxios from "../utils/useAxios"
+import { jwtDecode } from 'jwt-decode'; 
+
 
 const Todo = () => {
+    const baseUrl = "http://127.0.0.1:8000/api/"
+    const api = useAxios()
+
+    const token = localStorage.getItem("authTokens") // 233704237huhweioyop;yrwriweyrwe
+    const decoded = jwtDecode(token)
+    const user_id = decoded.user_id
+
+    const [todo, setTodo] = useState([])
+    useEffect(() => {
+        fetchTodos()
+    }, [])
+
+    const fetchTodos = async () => {
+        await api.get(baseUrl + '/todo/' + user_id + '/').then((res) => {
+            console.log(res.data);
+            setTodo(res.data)
+        })
+    }
+
+    
   return (
     <div>
             <div>
