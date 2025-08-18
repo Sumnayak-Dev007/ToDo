@@ -61,10 +61,24 @@ const Todo = () => {
     }
 
 
-const deleteTodo = async (todo_id) => {
-        await api.delete(baseUrl + '/todo-detail/' + user_id + '/' + todo_id + '/')
+    const deleteTodo = async (todo_id) => {
+            await api.delete(baseUrl + '/todo-detail/' + user_id + '/' + todo_id + '/')
+            Swal.fire({
+                title: "Todo Deleted",
+                icon:"success",
+                toast: true,
+                timer: 2000,
+                position: "top-right",
+                timerProgressBar: true,
+            })
+            fetchTodos()
+        }
+
+
+    const markTodoAsComplete = async (todo_id) => {
+        await api.patch(baseUrl + '/todo-mark-as-completed/' + user_id + '/' + todo_id + '/')
         Swal.fire({
-            title: "Todo Deleted",
+            title: "Todo Completed",
             icon:"success",
             toast: true,
             timer: 2000,
@@ -74,8 +88,6 @@ const deleteTodo = async (todo_id) => {
         fetchTodos()
     }
 
-
-    
   return (
     <div>
             <div>
