@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import useAxios from "../utils/useAxios"
 import { jwtDecode } from 'jwt-decode'; 
+import Swal from 'sweetalert2'
 
 
 const Todo = () => {
@@ -23,7 +24,41 @@ const Todo = () => {
         })
     }
 
+     const [createTodo, setCreateTodo] = useState({title: "", completed: ""})
+    const handleNewTodoTitle = (event) => {
+        setCreateTodo({
+            ...createTodo,
+            [event.target.name]: event.target.value
+        })
+    }
     
+    console.log(createTodo.title);  
+
+    const formSubmit = () => {
+        const formdata = new FormData()
+
+        formdata.append("user", user_id)
+        formdata.append("title", createTodo.title)
+        formdata.append("completed", false)
+
+        try{
+            api.post(baseUrl + '/todo/' + user_id + '/', formdata).then((res) => {
+                console.log(res.data);
+                Swal.fire({
+                    title: "Todo Added",
+                    icon:"success",
+                    toast: true,
+                    timer: 2000,
+                    position: "top-right",
+                    timerProgressBar: true,
+                })
+                fetchTodos()
+                createTodo.title = ""
+            })
+        } catch (error){
+            console.log(error);
+        }
+    }
   return (
     <div>
             <div>
