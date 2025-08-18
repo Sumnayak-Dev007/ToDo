@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 
 
 const Todo = () => {
-    const baseUrl = "http://127.0.0.1:8000/api/"
+    const baseUrl = "http://127.0.0.1:8000/api"
     const api = useAxios()
 
     const token = localStorage.getItem("authTokens") // 233704237huhweioyop;yrwriweyrwe
@@ -61,18 +61,18 @@ const Todo = () => {
     }
 
 
-    const deleteTodo = async (todo_id) => {
-            await api.delete(baseUrl + '/todo-detail/' + user_id + '/' + todo_id + '/')
-            Swal.fire({
-                title: "Todo Deleted",
-                icon:"success",
-                toast: true,
-                timer: 2000,
-                position: "top-right",
-                timerProgressBar: true,
-            })
-            fetchTodos()
-        }
+const deleteTodo = async (todo_id) => {
+        await api.delete(baseUrl + '/todo-details/' + user_id + '/' + todo_id + '/')
+        Swal.fire({
+            title: "Todo Deleted",
+            icon:"success",
+            toast: true,
+            timer: 2000,
+            position: "top-right",
+            timerProgressBar: true,
+        })
+        fetchTodos()
+    }
 
 
     const markTodoAsComplete = async (todo_id) => {
