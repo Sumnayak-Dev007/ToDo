@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-wp#mvcsxk$@h!$d92)9z(6jmj94q#y&wcekt9o7=8eqpl$i@6r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 AUTH_USER_MODEL = "api.User"
 

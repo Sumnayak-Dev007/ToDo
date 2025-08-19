@@ -24,7 +24,7 @@ const Todo = () => {
         })
     }
 
-     const [createTodo, setCreateTodo] = useState({title: "", completed: ""})
+    const [createTodo, setCreateTodo] = useState({title: "", completed: ""})
     const handleNewTodoTitle = (event) => {
         setCreateTodo({
             ...createTodo,
@@ -61,18 +61,18 @@ const Todo = () => {
     }
 
 
-const deleteTodo = async (todo_id) => {
-        await api.delete(baseUrl + '/todo-details/' + user_id + '/' + todo_id + '/')
-        Swal.fire({
-            title: "Todo Deleted",
-            icon:"success",
-            toast: true,
-            timer: 2000,
-            position: "top-right",
-            timerProgressBar: true,
-        })
-        fetchTodos()
-    }
+    const deleteTodo = async (todo_id) => {
+            await api.delete(baseUrl + '/todo-details/' + user_id + '/' + todo_id + '/')
+            Swal.fire({
+                title: "Todo Deleted",
+                icon:"success",
+                toast: true,
+                timer: 2000,
+                position: "top-right",
+                timerProgressBar: true,
+            })
+            fetchTodos()
+        }
 
 
     const markTodoAsComplete = async (todo_id) => {
