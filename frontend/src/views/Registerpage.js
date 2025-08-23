@@ -25,7 +25,7 @@ function Registerpage() {
   
 
   return (
-    <div className='mt-5'>
+    <div style={{'marginTop':"7rem"}}>
       <>
         <section className="vh-100" style={{ backgroundColor: "#9A616D" }}>
           <div className="container py-5 h-100">
